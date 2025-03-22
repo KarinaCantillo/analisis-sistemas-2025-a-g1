@@ -1,4 +1,5 @@
 # El Valor Empresarial del Design Thinking
+![.](image.png)
 
 El Design Thinking se ha convertido en una metodología fundamental para IBM, transformando su cultura organizacional hacia un enfoque más centrado en el cliente y colaborativo. Esta metodología ayuda a identificar oportunidades, impulsar la innovación y mejorar significativamente los resultados empresariales.
 A través del Design Thinking, los equipos logran ver los problemas desde múltiples perspectivas, desarrollando una comprensión más profunda de las necesidades reales de los usuarios. Esto permite crear productos y servicios genuinamente útiles, en lugar de simplemente acumular características que podrían no resolver los problemas fundamentales de los clientes.
