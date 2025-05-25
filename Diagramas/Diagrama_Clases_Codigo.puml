@@ -1,0 +1,65 @@
+classDiagram
+    class Category {
+        + id: String
+        + name: String
+        + description: String
+        + createdAt: DateTime
+        --
+        + listAllCategories(): List<Category>
+        + getCategoryById(id: String): Category
+    }
+
+    class Product {
+        + id: String
+        + product: String (Nombre del Producto)
+        + price: Float
+        + artisan: String (Nombre del Artesano)
+        + categoryId: String (FK a Category)
+        + createdAt: DateTime
+        + updatedAt: DateTime
+        --
+        + listAllProducts(): List<Product>
+        + getProductDetails(productId: String): Product
+        + getProductPrice(productId: String): Float
+        + filterProductsByCategory(categoryId: String): List<Product>
+    }
+
+    class Order {
+        + id: String
+        + buyerName: String
+        + buyerEmail: String
+        + buyerPhone: String
+        + shippingAddress: String
+        + city: String
+        + productId: String (FK)
+        + productName: String (Atributo de referencia)
+        + quantity: Int
+        + total: Float
+        + paymentMethod: String
+        + createdAt: DateTime
+        --
+        + createOrder(orderData): Order
+        + getOrderDetails(orderId: String): Order
+        + calculateTotal(productId: String, quantity: Int): Float
+        +generateReceip(orderId:String): String
+    }
+
+    class Address {
+        + id: String
+        + street: String
+        + country: String
+        + createdAt: DateTime
+        --
+        + getStoreAddress(): Address
+    }
+
+    class Notification {
+        + id: String
+        + date: String
+        + message: String
+        + createdAt: DateTime
+        + updatedAt: DateTime
+        --
+        + getLatestNotifications(): List<Notification>
+        + getNotificationsByDate(date: String): List<Notification>
+    }
