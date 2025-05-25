@@ -1,0 +1,65 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+//SOLO DESCRIPCIÓN DE LAS CATEGORIAS 
+model Category {
+  id        String   @id @default(uuid())
+  name      String
+  description String
+  createdAt DateTime @default(now())
+}
+
+//TODA LA INFO NECESARIA PARA HACER EL PEDIDO DIRECATMENTE SIN UN LOGIN PREVIO
+model Order {
+  id            String   @id @default(uuid())
+  buyerName     String
+  buyerEmail    String
+  buyerPhone    String?  
+  shippingAddress String   // Dirección completa (calle, número, etc.)
+  city            String   // Ciudad
+  productName   String   // Nombre del producto
+  quantity      Int      // Cantidad a llevar
+  total         Float    // Total a pagar -- TOCARÍA HACER ESTE CÁLCULO TENIENDO EN CUENTA EL PRECIO DE Product
+  paymentMethod String   // Tarjeta, contraentrega, etc.
+  createdAt     DateTime @default(now())
+}
+
+//NOMBRE DEL PRODUCTO CON PRECIO, AUTOR Y CATEGORIA A LA QUE PERTENECE
+model Product {
+  id        String   @id @default(uuid())
+  product   String   // reference to Product
+  price     Float
+  artisan   String   // reference to User (artisan)
+  category  String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+//DIRECCIÓN DEL NEGOCIO, EN LA PÁGINA IRÍA LA UBICACIÓN CON GOOGLE MAPS
+model Address {
+  id        String   @id @default(uuid())
+  street    String
+  country   String
+  createdAt DateTime @default(now())
+}
+
+//EVENTOS U OTRAS ACTIVIDADES
+model Notification {
+  id        String   @id @default(uuid())
+  date      String 
+  message   String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
