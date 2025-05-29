@@ -35,6 +35,7 @@ classDiagram
         + productName: String (Atributo de referencia)
         + quantity: Int
         + total: Float
+        + postalCode : String
         + paymentMethod: String
         + createdAt: DateTime
         --
